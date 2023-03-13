@@ -1,12 +1,13 @@
 package lu.atozdigital.api.models;
 
 import jakarta.persistence.*;
+import lu.atozdigital.api.models.base.BaseModel;
 
 import java.util.UUID;
 
 @Entity
 @Table(name = "article")
-public class Article {
+public class Article extends BaseModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

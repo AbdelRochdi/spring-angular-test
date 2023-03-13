@@ -1,10 +1,12 @@
 package lu.atozdigital.api.dtos;
 
+import lu.atozdigital.api.dtos.base.BaseDTO;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-public class ArticleDTO {
+public class ArticleDTO extends BaseDTO {
 
     private UUID uuid;
 
