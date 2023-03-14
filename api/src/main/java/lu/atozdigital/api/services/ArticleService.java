@@ -1,14 +1,16 @@
 package lu.atozdigital.api.services;
 
 import lu.atozdigital.api.dtos.ArticleDTO;
+import lu.atozdigital.api.models.Article;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface ArticleService {
     ArticleDTO createArticle(ArticleDTO articleDTO);
 
-    ArticleDTO getArticleByUuid(UUID uuid);
+    ArticleDTO getArticleById(Integer id);
 
-    List<ArticleDTO> getAllArticles();
+    List<ArticleDTO> getAllArticlesDTOs();
+
+    List<Article> getAllArticles();
 }

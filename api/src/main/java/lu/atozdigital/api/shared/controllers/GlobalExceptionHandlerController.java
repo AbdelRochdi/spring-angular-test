@@ -14,7 +14,7 @@ public class GlobalExceptionHandlerController {
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(RuntimeException.class)
     public ApiErrorDTO handleException(RuntimeException exception) {
-        return new ApiErrorDTO(HttpStatus.BAD_REQUEST, exception.getMessage());
+        return new ApiErrorDTO(HttpStatus.BAD_REQUEST, "BAD_REQUEST");
     }
 
 }

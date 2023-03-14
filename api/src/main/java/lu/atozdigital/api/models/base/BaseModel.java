@@ -1,11 +1,14 @@
 package lu.atozdigital.api.models.base;
 
+import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class BaseModel {
+@MappedSuperclass
+public class BaseModel implements Serializable {
 
     private Date creationDate;
 

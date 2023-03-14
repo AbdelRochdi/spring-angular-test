@@ -4,11 +4,10 @@ import lu.atozdigital.api.dtos.base.BaseDTO;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
 
 public class ArticleDTO extends BaseDTO {
 
-    private UUID uuid;
+    private Integer id;
 
     @NotBlank
     private String name;
@@ -18,12 +17,12 @@ public class ArticleDTO extends BaseDTO {
 
     private String image;
 
-    public UUID getUuid() {
-        return uuid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

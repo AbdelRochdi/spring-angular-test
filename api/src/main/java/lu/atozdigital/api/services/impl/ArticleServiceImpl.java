@@ -10,10 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -29,25 +27,30 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public ArticleDTO createArticle(ArticleDTO articleDTO){
         Article article = modelMapper.map(articleDTO, Article.class);
-        article.setUuid(UUID.randomUUID());
+        article.setId(null);
 
         return modelMapper.map(articleRepository.save(article), ArticleDTO.class);
     }
 
     @Override
-    public ArticleDTO getArticleByUuid(UUID uuid){
-        Article article = articleRepository.findByUuid(uuid).orElseThrow(() -> {
-            LOGGER.log(Level.SEVERE, "no article found with uuid [{0}]", uuid);
+    public ArticleDTO getArticleById(Integer id){
+        Article article = articleRepository.findById(id).orElseThrow(() -> {
+            LOGGER.log(Level.SEVERE, "no article found with uuid [{0}]", id);
             return new EntityNotFoundException("Failed to fetch article");
         });
         return modelMapper.map(article, ArticleDTO.class);
     }
 
     @Override
-    public List<ArticleDTO> getAllArticles(){
+    public List<ArticleDTO> getAllArticlesDTOs(){
         return articleRepository.findAll()
                 .stream()
                 .map(article -> modelMapper.map(article, ArticleDTO.class))
-                .collect(Collectors.toList());
+                .toList();
+    }
+
+    @Override
+    public List<Article> getAllArticles(){
+        return articleRepository.findAll();
     }
 }
