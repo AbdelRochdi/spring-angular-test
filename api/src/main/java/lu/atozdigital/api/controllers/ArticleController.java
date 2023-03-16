@@ -19,6 +19,7 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
+    @CrossOrigin
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ArticleDTO> createArticle(@RequestPart("payload") ArticleDTO articleDTO,
                                                     @RequestPart(value = "image", required = false) MultipartFile image) throws ServerException {
@@ -27,6 +28,7 @@ public class ArticleController {
         return new ResponseEntity<>(article, HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public ResponseEntity<ArticleDTO> getArticleByUuid(@PathVariable(name = "id") Integer id){
         ArticleDTO article = articleService.getArticleById(id);
@@ -34,6 +36,7 @@ public class ArticleController {
         return new ResponseEntity<>(article, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<List<ArticleDTO>> getAllArticles(){
         List<ArticleDTO> articles = articleService.getAllArticlesDTOs();

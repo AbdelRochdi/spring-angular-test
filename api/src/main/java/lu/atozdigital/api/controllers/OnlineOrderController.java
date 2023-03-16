@@ -17,6 +17,7 @@ public class OnlineOrderController {
     @Autowired
     private OnlineOrderService onlineOrderService;
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<OnlineOrderDTO> createOnlineOrder(@RequestBody OnlineOrderDTO onlineOrderDTO) throws ServerException {
         OnlineOrderDTO onlineOrder = onlineOrderService.createOnlineOrder(onlineOrderDTO);
@@ -24,6 +25,7 @@ public class OnlineOrderController {
         return new ResponseEntity<>(onlineOrder, HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @PutMapping("/{id}")
     public ResponseEntity<OnlineOrderDTO> updateOnlineOrderByUuid(@PathVariable(name = "id") Integer id,
                                                                    @RequestBody OnlineOrderDTO onlineOrderDTO) throws ServerException {
@@ -32,6 +34,7 @@ public class OnlineOrderController {
         return new ResponseEntity<>(onlineOrder, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<List<OnlineOrderDTO>> getAllOnlineOrders(){
         List<OnlineOrderDTO> onlineOrders = onlineOrderService.getAllOnlineOrders();
