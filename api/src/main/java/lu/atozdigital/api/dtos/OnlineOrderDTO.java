@@ -14,6 +14,8 @@ public class OnlineOrderDTO extends BaseDTO {
     @JsonProperty("article_ids")
     private List<Integer> articleIds;
 
+    private List<ArticleDTO> articles;
+
     public Integer getId() {
         return id;
     }
@@ -36,5 +38,13 @@ public class OnlineOrderDTO extends BaseDTO {
 
     public void setArticleIds(List<Integer> articleIds) {
         this.articleIds = articleIds;
+    }
+
+    public List<ArticleDTO> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<ArticleDTO> articles) {
+        this.articles = articles;
     }
 }

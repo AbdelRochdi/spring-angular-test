@@ -45,7 +45,8 @@ public class ModelMapperConfig {
                 }
         );
         modelMapper.typeMap(OnlineOrder.class, OnlineOrderDTO.class).addMappings(mapper ->
-                mapper.using(articlesToIdsConverter).map(OnlineOrder::getArticles, OnlineOrderDTO::setArticleIds));
+                mapper.using(articlesToIdsConverter).map(OnlineOrder::getArticles, OnlineOrderDTO::setArticleIds)
+        );
 
         modelMapper.typeMap(Article.class, ArticleDTO.class).addMappings(mapper ->
                 mapper.using(bytesToStringConverter).map(Article::getImage, ArticleDTO::setImage));
