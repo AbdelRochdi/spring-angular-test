@@ -15,6 +15,9 @@ public class Article extends BaseModel {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "description", nullable = false)
+    private String description;
+
     @Column(name = "price", nullable = false)
     private Float price;
 
@@ -43,6 +46,14 @@ public class Article extends BaseModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Float getPrice() {

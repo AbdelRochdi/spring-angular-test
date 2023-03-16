@@ -12,6 +12,8 @@ public class ArticleDTO extends BaseDTO {
     @NotBlank
     private String name;
 
+    private String description;
+
     @NotNull
     private Float price;
 
@@ -31,6 +33,14 @@ public class ArticleDTO extends BaseDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Float getPrice() {
