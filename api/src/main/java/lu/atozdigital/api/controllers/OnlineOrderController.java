@@ -2,6 +2,7 @@ package lu.atozdigital.api.controllers;
 
 import lu.atozdigital.api.dtos.OnlineOrderDTO;
 import lu.atozdigital.api.services.OnlineOrderService;
+import lu.atozdigital.api.shared.exceptions.ServerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class OnlineOrderController {
     private OnlineOrderService onlineOrderService;
 
     @PostMapping
-    public ResponseEntity<OnlineOrderDTO> createOnlineOrder(@RequestBody OnlineOrderDTO onlineOrderDTO){
+    public ResponseEntity<OnlineOrderDTO> createOnlineOrder(@RequestBody OnlineOrderDTO onlineOrderDTO) throws ServerException {
         OnlineOrderDTO onlineOrder = onlineOrderService.createOnlineOrder(onlineOrderDTO);
 
         return new ResponseEntity<>(onlineOrder, HttpStatus.CREATED);
@@ -25,7 +26,7 @@ public class OnlineOrderController {
 
     @PutMapping("/{id}")
     public ResponseEntity<OnlineOrderDTO> updateOnlineOrderByUuid(@PathVariable(name = "id") Integer id,
-                                                                   @RequestBody OnlineOrderDTO onlineOrderDTO){
+                                                                   @RequestBody OnlineOrderDTO onlineOrderDTO) throws ServerException {
         OnlineOrderDTO onlineOrder = onlineOrderService.updateOnlineOrder(id, onlineOrderDTO);
 
         return new ResponseEntity<>(onlineOrder, HttpStatus.OK);

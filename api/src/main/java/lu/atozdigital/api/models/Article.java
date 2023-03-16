@@ -18,8 +18,9 @@ public class Article extends BaseModel {
     @Column(name = "price", nullable = false)
     private Float price;
 
+    @Lob
     @Column(name = "image")
-    private String image;
+    private byte[] image;
 
     public Article() {
     }
@@ -52,11 +53,11 @@ public class Article extends BaseModel {
         this.price = price;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 }
