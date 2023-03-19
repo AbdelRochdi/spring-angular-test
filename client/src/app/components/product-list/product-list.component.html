@@ -1,0 +1,21 @@
+<div class="articles">
+    <div *ngFor="let tempArticle of articles">
+
+        <div class="article">
+
+            <img src="{{tempArticle.image}}" alt="">
+
+            <div class="article-details">
+                <div class="details-top"> 
+                    <span class="name">{{tempArticle.name}} </span>
+                </div>
+                <div class="details-bottom">
+                    <span class="price">{{tempArticle.price | currency : 'USD'}}</span>
+                    <button class="cta">Order now</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

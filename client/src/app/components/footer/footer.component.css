@@ -1,0 +1,25 @@
+footer{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: rgb(39, 36, 36);
+    color: white;
+    justify-content: space-around;
+    padding: 1em;
+    margin: auto 0 -0.5em -0.5em;
+}
+
+footer img{
+    background-color: white;
+    padding: 0.2em;
+}
+
+.policies{
+    display: flex;
+    width: 20%;
+    justify-content: space-between;
+}
+
+.policies div {
+    margin: 0 0.5em;
+}
