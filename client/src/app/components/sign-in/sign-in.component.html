@@ -1,0 +1,12 @@
+<form [formGroup]="loginFormGroup!" (ngSubmit)="onLogin()" class="sign-in-form">
+
+    <span class="sign-in-header">Sign in</span>
+    <input type="text" name="email" placeholder="Email" formControlName="email">
+    <input type="password" name="password" placeholder="Password" formControlName="password">
+
+    <button type="submit">Sign in</button>
+
+    <span class="or">or</span>
+
+    <a routerLink="/register">Register</a>
+</form>

@@ -1,3 +1,8 @@
 <header>
-    <img src="assets/images/logo-img.png" alt="">
+    <a routerLink="/home"><img src="assets/images/logo-img.png" alt=""></a>
+    <div class="links">
+        <a *ngIf="!(authService.isLoggedIn$ | async)" routerLink="/sign-in" class="sign-in">Sign in</a>
+        <a *ngIf="authService.isLoggedIn$ | async" routerLink="/home" class="sign-in">Orders</a>
+        <a *ngIf="authService.isLoggedIn$ | async" (click)="onLogout()" routerLink="/home" class="sign-in">Logout</a>
+    </div>
 </header>

@@ -1,5 +1,24 @@
 header{
     display: flex;
-    justify-content: center;
-    padding: 1em;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+}
+
+.sign-in{
+    border: 1px solid rgb(209, 190, 190);
+    padding: 0.2em 0.5em 0.3em;
+    border-radius: 0.25em;
+    cursor: pointer;
+    transition: 0.5s;
+    text-decoration: none;
+    color: #000;
+}
+
+.sign-in:hover{
+    background-color: rgb(247, 247, 247);
+}
+
+.links a{
+    margin-left: 1em;
 }
