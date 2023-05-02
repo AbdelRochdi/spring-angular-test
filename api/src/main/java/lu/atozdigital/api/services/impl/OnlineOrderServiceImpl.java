@@ -2,6 +2,7 @@ package lu.atozdigital.api.services.impl;
 
 import jakarta.persistence.EntityNotFoundException;
 import lu.atozdigital.api.dtos.OnlineOrderDTO;
+import lu.atozdigital.api.models.Account;
 import lu.atozdigital.api.models.OnlineOrder;
 import lu.atozdigital.api.repositories.OnlineOrderRepository;
 import lu.atozdigital.api.services.OnlineOrderService;
@@ -28,11 +29,12 @@ public class OnlineOrderServiceImpl implements OnlineOrderService {
     private ModelMapper modelMapper;
 
     @Override
-    public OnlineOrderDTO createOnlineOrder(OnlineOrderDTO onlineOrderDTO) throws ServerException {
+    public OnlineOrderDTO createOnlineOrder(OnlineOrderDTO onlineOrderDTO, Integer accountId) throws ServerException {
         OnlineOrder onlineOrder = modelMapper.map(onlineOrderDTO, OnlineOrder.class);
         onlineOrder.setReference(UUID.randomUUID().toString()
                 .replace("-", "")
                 .substring(0, 10).toUpperCase(Locale.ROOT));
+        onlineOrder.setAccount(new Account(accountId));
 
         try {
             onlineOrderRepository.save(onlineOrder);
@@ -45,7 +47,7 @@ public class OnlineOrderServiceImpl implements OnlineOrderService {
     }
 
     @Override
-    public OnlineOrderDTO updateOnlineOrder(Integer id, OnlineOrderDTO onlineOrderDTO) throws ServerException {
+    public OnlineOrderDTO updateOnlineOrder(Integer id, OnlineOrderDTO onlineOrderDTO, Integer accountId) throws ServerException {
         OnlineOrder onlineOrder = onlineOrderRepository.findById(id).orElseThrow(() -> {
             LOGGER.log(Level.SEVERE, "no onlineOrder found with id [{0}]", id);
             return new EntityNotFoundException("Failed to fetch onlineOrder");
@@ -63,8 +65,8 @@ public class OnlineOrderServiceImpl implements OnlineOrderService {
     }
 
     @Override
-    public List<OnlineOrderDTO> getAllOnlineOrders(){
-        return onlineOrderRepository.findAll()
+    public List<OnlineOrderDTO> getAllOnlineOrdersByAccount(Integer accountId){
+        return onlineOrderRepository.findByAccount(accountId)
                 .stream()
                 .map(onlineOrder -> modelMapper.map(onlineOrder, OnlineOrderDTO.class))
                 .toList();

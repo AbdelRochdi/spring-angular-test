@@ -25,6 +25,10 @@ public class OnlineOrder extends BaseModel {
             inverseJoinColumns = @JoinColumn(name = "article_id"))
     private Set<Article> articles = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "account_id", updatable = false, nullable = false)
+    private Account account;
+
     public Integer getId() {
         return id;
     }
@@ -47,5 +51,13 @@ public class OnlineOrder extends BaseModel {
 
     public void setArticles(Set<Article> articles) {
         this.articles = articles;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
